@@ -8,13 +8,13 @@ csvpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources', 
 #open with election data file
 with open(csvpath,newline='') as csvfile:
 
-    #holes content
+    #holds content
     csvreader = csv.reader(csvfile,delimiter=',')
     #read first row
     csv_header = next(csvreader)
     candidate_list = [candidate[2] for candidate in csvreader]
 
-    #reading each row od data after the header
+    #reading each row of data after the header
     for row in csvreader:
         totalVotes += 1
         if row[2] not in votesPerCandidate:
@@ -29,7 +29,7 @@ total_votes = len(candidate_list)
 candidates_info = [[candidate,candidate_list.count(candidate)]for candidate in set(candidate_list)]
 votesPerCandidate = {}
 
-
+#print the election results
 print("Election Results")
 print("------------------------------------")
 print(f"Total Votes: {total_votes}")
@@ -44,7 +44,7 @@ print(f"Winner:{candidates_info[0][0]}")
 print("------------------------------------")
 
 
-#text file
+#print results to text file
 f = open ("election_results.txt","w")
 f.write("Election Results")
 f.write('\n')
